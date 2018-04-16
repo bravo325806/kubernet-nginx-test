@@ -11,10 +11,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 $sql = "SELECT * FROM tablename";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
+    while($row =mysqli_fetch_array($result)) {
         echo "id: " . $row["id"]. " - Name: " . $row["name"]. "<br>";
     }
 } else {
